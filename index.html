@@ -12,48 +12,63 @@
 
     <style>
         :root {
-            /* M3 Цвета (Система Dynamic Color) */
-            --md-sys-color-primary: #0061a4;
-            --md-sys-color-on-primary: #ffffff;
-            --md-sys-color-primary-container: #d1e4ff;
-            --md-sys-color-surface: #fdfcff;
-            --md-sys-color-on-surface: #1a1c1e;
-            --md-sys-color-outline: #73777f;
-            --md-sys-color-surface-variant: #dfe2eb;
+        /* Светлая тема (Default) */
+        --md-sys-color-primary: #0061a4;
+        --md-sys-color-on-primary: #ffffff;
+        --md-sys-color-surface: #fdfcff;
+        --md-sys-color-on-surface: #1a1c1e;
+        --md-sys-color-surface-variant: #dfe2eb;
+        --md-sys-color-on-surface-variant: #44474e;
+        --md-sys-color-outline: #73777f;
+        }
+
+        @media (prefers-color-scheme: dark) {
+        :root {
+            /* Темная тема */
+            --md-sys-color-primary: #d1e4ff; /* Светло-голубой для акцентов */
+            --md-sys-color-on-primary: #003258;
+            --md-sys-color-surface: #1a1c1e; /* Глубокий серый */
+            --md-sys-color-on-surface: #e2e2e6;
+            --md-sys-color-surface-variant: #44474e; /* Чуть светлее фона */
+            --md-sys-color-on-surface-variant: #c4c6cf;
+            --md-sys-color-outline: #8e9199;
+        }
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--md-sys-color-surface);
-            color: var(--md-sys-color-on-surface);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        background-color: var(--md-sys-color-surface);
+        color: var(--md-sys-color-on-surface);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        transition: background-color 0.3s ease;
         }
 
         .m3-card {
-            background-color: var(--md-sys-color-surface-variant);
-            border-radius: 28px; /* Фирменное закругление M3 */
-            padding: 40px;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        background-color: var(--md-sys-color-surface-variant);
+        border-radius: 28px;
+        padding: 40px;
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        transition: transform 0.2s ease;
         }
 
         .logo-container {
             width: 80px;
             height: 80px;
             background: var(--md-sys-color-primary);
-            color: white;
+            color: var(--md-sys-color-on-primary);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 24px;
             font-size: 40px;
             font-weight: bold;
             font-family: 'Google Sans', sans-serif;
@@ -68,21 +83,38 @@
         p {
             font-size: 16px;
             line-height: 24px;
-            color: #44474e;
+            color: var(--md-sys-color-on-surface-variant);
             margin-bottom: 32px;
         }
 
-        /* Стилизация встроенной кнопки прошивальщика */
-        esp-web-install-button {
-            --esp-tools-button-border-radius: 20px;
-            --esp-tools-button-color: var(--md-sys-color-primary);
-            --esp-tools-button-bg-color: transparent;
+        /* Стилизация кнопки */
+        .install-btn {
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            border: none;
+            padding: 16px 28px;
+            border-radius: 100px;
+            font-family: 'Google Sans';
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto;
+            transition: opacity 0.2s;
+        }
+
+        .install-btn:hover {
+            opacity: 0.9;
         }
 
         .footer {
-            margin-top: 24px;
+            margin-top: 32px;
             font-size: 12px;
             color: var(--md-sys-color-outline);
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
